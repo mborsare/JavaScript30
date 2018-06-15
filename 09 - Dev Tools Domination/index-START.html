@@ -18,28 +18,53 @@
     }
 
     // Regular
+    console.log("Hello friends");
 
     // Interpolated
+    console.log("Hello friends, I am a %s string!", '💀');
 
     // Styled
+    console.log("%c I am really big", "font-size: 36px; font-family: 'fantasy'");
 
     // warning!
+    console.warn("Run for your lives!");
 
     // Error :|
+    console.error("Watch up something is up!");
 
     // Info
+    console.info("This is an informational message you should pay attention to");
 
     // Testing
+    const p = document.querySelector("p");
+    console.assert( p.classList.contains("ouch"), "this is wrong!");
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    console.clear();
+    dogs.forEach(dog =>{
+      console.log(`This is a ${dog.name}`);
+      console.log(`${dog.name} the dog ${dog.age} is years old`);
+      console.log(`${dog.name} the dog ${dog.age * 7} is dog years old`);
+    });
 
     // counting
+    console.count(p);
 
     // timing
+    console.time("fetching data");
+    fetch("https://api.github.com/users/mborsare")
+      .then( data => data.json() )
+      .then( data => {
+        console.timeEnd("fetching data");
+        console.log(data);
+      });
 
   </script>
 </body>
