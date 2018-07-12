@@ -58,6 +58,26 @@
       };
     }
 
+    //select all the things
+  const sliderImages = document.querySelectorAll('.slide-in');
+  
+  function checkSlide(e) {
+    sliderImages.forEach(sliderImage => {
+      const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+      const imageBottom = sliderImage.offsetTop + sliderImage.height;
+      const isHalfShown = slideInAt > sliderImage.offsetTop;
+      const isNotScrolledPast = window.scrollY < imageBottom;
+
+      if (isHalfShown && isNotScrolledPast) {
+       sliderImage.classList.add('active'); 
+      } else {
+       sliderImage.classList.remove('active'); 
+      }
+    })
+  }
+
+  window.addEventListener("scroll", debounce(checkSlide));
+
   </script>
 
   <style>
@@ -65,7 +85,8 @@
       box-sizing: border-box;
       background:#ffc600;
       font-family:'helvetica neue';
-      font-size: 20px;
+      font-size: 18px;
+      line-height: 1.4;
       font-weight: 200;
     }
     body {
@@ -84,7 +105,6 @@
       margin: 100px auto;
       background:white;
       padding:40px;
-      text-align: justify;
     }
 
     .align-left {
