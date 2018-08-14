@@ -40,12 +40,18 @@
       done: false
     }
     items.push(item);
-    console.table(items);
+    populateList(items, itemsList);
     this.reset();
   }
 
-  function populateList() {
-    
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+      return `
+        <li>
+          <label for="">${plate.text}</label>
+        </li>  
+      `;
+    }).join('');
   }
 
   // Add event listeners and call functions
